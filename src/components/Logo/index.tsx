@@ -5,7 +5,7 @@ export function Logo() {
   return (
     <div className={styles.logo}>
       <TimerIcon />
-      <span>Chonos</span>
+      <span className={styles.logoLink}>Chonos</span>
     </div>
   )
 }
