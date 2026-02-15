@@ -1,0 +1,16 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.footer a {
+  color: var(--text-disabled);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
