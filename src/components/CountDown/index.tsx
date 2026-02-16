@@ -1,6 +1,8 @@
+import type { HomeProps } from '../../pages/Home';
 import style from './styles.module.css';
 
-
-export function CountDown() {
-  return (<div className={style.container}>00:00</div>);
+export function CountDown({ state }: HomeProps) {
+  return (
+    <div className={style.container}>{state.formattedSecondsRemaining}</div>
+  );
 }
