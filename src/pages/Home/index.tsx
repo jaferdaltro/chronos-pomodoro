@@ -9,14 +9,14 @@ export type HomeProps = {
   setState: React.Dispatch<React.SetStateAction<TaskStateModel>>;
 };
 
-export function Home(props: HomeProps) {
+export function Home() {
   return (
     <Main>
       <Container>
-        <CountDown {...props} />
+        <CountDown />
       </Container>
       <Container>
-        <MainForm {...props} />
+        <MainForm />
       </Container>
     </Main>
   );

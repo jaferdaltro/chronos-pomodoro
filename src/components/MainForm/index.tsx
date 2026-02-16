@@ -1,29 +1,12 @@
 import { PlayCircleIcon, StopCircleIcon } from 'lucide-react';
+
 import { Cycles } from '../Cycles';
 import { DefaultButton } from '../DefaultButton';
 import { DefaultInput } from '../DefaultInput';
-import type { HomeProps } from '../../pages/Home';
 
-export function MainForm({ state, setState }: HomeProps) {
-  function handleClick() {
-    setState(prevState => {
-      return {
-        ...prevState,
-        config: {
-          ...prevState.config,
-          workTime: 22,
-        },
-        formattedSecondsRemaining: '22:22',
-      };
-    });
-  }
+export function MainForm() {
   return (
     <form action=''>
-      <div>
-        <button type='button' onClick={handleClick}>
-          CLIQUE MEU QUERIDO
-        </button>
-      </div>
       <div className='formRow'>
         <DefaultInput
           id='label'
