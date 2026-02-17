@@ -54,6 +54,22 @@ export function MainForm() {
       };
     });
   }
+  function handleInterruptTask() {
+    setState(prevState => {
+      return {
+        ...prevState,
+        activeTask: null,
+        secondsRemaining: 0,
+        formattedSecondsRemaining: '00:00',
+        tasks: prevState.tasks.map(task => {
+          if (task.id === state.activeTask?.id) {
+            return { ...task, interruptDate: Date.now() };
+          }
+          return task;
+        }),
+      };
+    });
+  }
   return (
     <form onSubmit={handleCreateNewTask} action=''>
       <div className='formRow'>
@@ -68,12 +84,30 @@ export function MainForm() {
       <div className='formRow'>
         <p>Proximo intervalo é de {nextCycle} min.</p>
       </div>
+      {state.currentCycle > 0 && (
+        <div className='formRow'>
+          <Cycles />
+        </div>
+      )}
       <div className='formRow'>
-        <Cycles />
-      </div>
-      <div className='formRow'>
-        <DefaultButton icon={<PlayCircleIcon />} />
-        <DefaultButton icon={<StopCircleIcon />} color='red' />
+        {!state.activeTask && (
+          <DefaultButton
+            title='Iniciar o ciclo'
+            aria-label='Iniciar o ciclo'
+            icon={<PlayCircleIcon />}
+            key={'startButton'}
+          />
+        )}
+        {!!state.activeTask && (
+          <DefaultButton
+            icon={<StopCircleIcon />}
+            onClick={handleInterruptTask}
+            color='red'
+            title='Parar o ciclo'
+            aria-label='Parar o ciclo'
+            key={'stopButton'}
+          />
+        )}
       </div>
     </form>
   );
